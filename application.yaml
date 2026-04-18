@@ -6,7 +6,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/RebeccaBle/application-deployment.git
-    targetRevision: automatisation
+    targetRevision: main
     path: deployment
   destination:
     server: https://kubernetes.default.svc
