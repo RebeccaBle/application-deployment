@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: movie
-        image: rebeccable/mise_en_prod_projet:v0.0.2
+        image: rebeccable/mise_en_prod_projet:v0.0.3
         ports:
         - containerPort: 8000
         env:
