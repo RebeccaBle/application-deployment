@@ -15,13 +15,29 @@ spec:
         app: movie
     spec:
       containers:
-      - name: movie
-        image: rebeccable/mise_en_prod_projet:v0.0.9
-        ports:
-        - containerPort: 8000
-        env:
-        - name: JETON_API
-          valueFrom:
-            secretKeyRef:
-              name: api-jeton-movie
-              key: JETON_API
+        - name: movie
+          image: rebeccable/mise_en_prod_projet:v1.0.1
+          ports:
+            - containerPort: 8000
+          env:
+            - name: JETON_API
+              valueFrom:
+                secretKeyRef:
+                  name: api-jeton-movie
+                  key: JETON_API
+            - name: MLFLOW_TRACKING_URI
+              value: "https://user-${USERNAME}-mlflow.user.lab.sspcloud.fr"
+            - name: MLFLOW_TRACKING_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mlflow-secrets
+                  key: MLFLOW_TRACKING_USERNAME
+            - name: MLFLOW_TRACKING_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mlflow-secrets
+                  key: MLFLOW_TRACKING_PASSWORD
+          resources:
+            limits:
+              memory: "2Gi"
+              cpu: "1000m"
